@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+
+.dark {
+  background-color: black;
+  color: white;
+}
+
+.light {
+  background-color: white;
+  color: black;
+}
+
+/* section1 */
+.pinkbtn {
+  @apply bg-red-500 px-6 pb-3 pt-4 my-5 rounded-xl text-white cursor-pointer hover:scale-95 transition duration-300
+}
+
+/* footer  */
+.hoverpink:hover {
+  @apply text-red-500 inline-block transition duration-300 hover:scale-110
+
+}
+
+.socialMedia {
+  @apply bg-red-500 rounded-full px-2 py-1
+  hover:bg-transparent
+}
