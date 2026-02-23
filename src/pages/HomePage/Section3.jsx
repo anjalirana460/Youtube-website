@@ -15,12 +15,12 @@ const textRef = useRef(null);
 useGSAP(()=>{
 
   gsap.to((textRef.current),{
-    x:-5000,
+    x:-4800,
     ease:"none",
     scrollTrigger:{
       trigger:sectionRef.current,
       start:"top top",
-      end:"+=5000",
+      end:"+=4800",
       scrub:2,
       pin:true,
       anticipatePin:1,
