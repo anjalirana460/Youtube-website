@@ -4,7 +4,7 @@ import ProjectCard from '../../components/ProjectCard'
 
 const Projects = () => {
   return (
-    <div className='pt-30 px-10'>
+    <section className='pt-30 px-10'>
       <h1 className='font-bold text-4xl text-center'>All Projects</h1>
       <div className='md:px-10  '>
         {projectIdeas.map((projects)=>{
@@ -13,7 +13,7 @@ const Projects = () => {
           )
         })}
       </div>
-    </div>
+    </section>
   )
 }
 

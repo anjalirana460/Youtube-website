@@ -1,41 +1,42 @@
-import { CircleCheck, MoveRight } from 'lucide-react'
-import React from 'react'
+import { useRef } from 'react'
+import { gsap }from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react';
+
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 const Section3 = () => {
+
+const sectionRef = useRef(null);
+const textRef = useRef(null);
+
+useGSAP(()=>{
+
+  gsap.to((textRef.current),{
+    x:-5000,
+    ease:"none",
+    scrollTrigger:{
+      trigger:sectionRef.current,
+      start:"top top",
+      end:"+=5000",
+      scrub:2,
+      pin:true,
+      anticipatePin:1,
+      invalidateOnRefresh:true
+    }
+  });
+},[]);
+
   return (
-    <div className='p-10 min-h-screen text-left'>
-      <div className='flex flex-col md:flex-row min-h-[50vh] w-full p-5 border border-gray-200 rounded-[15px] justify-evenly items-center'>
-        {/* divition 1  */}
-        <div className='md:flex-1/2 h-full '>
-          <img src="/project.png" alt="project" className='h-full rounded-full md:pl-25 pb-8' />
-        </div>
-
-        {/* division 2  */}
-        <div className='md:flex-1/2 h-full'>
-          <h1 className='font-bold text-6xl'>Join Us</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda autem, maiores perferendis porro doloribus nisi vel? In amet quod impedit a obcaecati officiis optio. Rerum debitis quidem blanditiis dolore in.
-          </p>
-          <div className='flex flex-wrap gap-5 mb-8'>
-            <div>
-              <h4 className='flex gap-3 my-5'><CircleCheck /><span>Competive salaries</span></h4>
-              <h4 className='flex gap-3 mb-5'><CircleCheck /><span>Gowth Have No starting point</span></h4>
-              <h4 className='flex gap-3 mb-5'><CircleCheck /><span>Great projects</span></h4>
-            </div>
-            <div>
-              <h4 className='flex gap-3 my-5'><CircleCheck /><span>Benifits are waiting for you</span></h4>
-              <h4 className='flex gap-3 mb-5'><CircleCheck /><span>Best Environment</span></h4>
-              <h4 className='flex gap-3 mb-5'><CircleCheck /><span>Great projects</span></h4>
-            </div>
-          </div>
-          <div>
-            <button className='flex text-blue-950 font-bold gap-5 hover:scale-105 tranistion duration-300' >
-              <span>Explore Notes </span><MoveRight />
-            </button>
-          </div>
-        </div>
-      </div>
-
-    </div>
+    // Horizontal scrolling Section 
+    <section ref={sectionRef}
+     className='hidden overflow-x-hidden relative lg:flex items-center h-screen'>
+      <h1 ref={textRef} className='text-[30vw] font-bold whitespace-nowrap '>
+        CODE WITH ANJALI
+      </h1>
+    </section>
   )
 }
 

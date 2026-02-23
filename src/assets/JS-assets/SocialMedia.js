@@ -3,17 +3,17 @@ import { Facebook, Github, Instagram, Twitter, Youtube } from 'lucide-react'
 export const socialMedia=[
   {
     name:"Facebook",
-    url:"https://facebook.com",
+    url:"https://www.facebook.com/",
     icon: Facebook
   },
   {
     name:"Youtube",
-    url:"https://youtube.com",
+    url:"https://www.youtube.com/@code_with_aanjali",
     icon: Youtube
   },
   {
     name:"Twitter",
-    url:"https://twitter.com",
+    url:"https://x.com/anjalirana460",
     icon: Twitter
   },
   {

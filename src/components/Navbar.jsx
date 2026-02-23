@@ -1,43 +1,52 @@
-import { Link } from 'react-router-dom'
-import { navLinks } from '../assets/JS-assets/Navbar'
-// import { useState } from 'react'
-import { ToggleLeftIcon, ToggleRightIcon } from 'lucide-react'
+import { Link } from 'react-router-dom';
+import { navLinks } from '../assets/JS-assets/Navbar';
+import { useRef } from 'react';
+import gsap from 'gsap';
+import {useGSAP} from "@gsap/react";
 
 const Navbar = () => {
-  // const [toggle, setToggle] = useState('LIGHT')
+  const navRef = useRef();
+
+  useGSAP(()=>{
+    const tl =gsap.timeline();
+    tl.from(navRef.current,{
+      y:-100,
+      opacity:0,
+      duration:1.5,
+      ease:"power4.out"
+    })
+    tl.from(".nav-link",{
+    y:-20,
+    opacity:0,
+    stagger:{
+      each:0.15,
+      from:"start"
+    },
+    duration:0.6,
+    ease:"power3.out"
+    },"-=0.4")
+  },{scope:navRef});
+
   return (
-    <>
+    <header>
       {/* Desktop Navbar */}
-      <nav className={`flex top-0 left-0 fixed w-full z-50 justify-between items-center px-10 py-3  backdrop-blur-md border-b shadow bg-white/60 border-gray-200"
-      `}>
+      <nav ref={navRef} className={`flex top-0 left-0 fixed w-full h-18 z-50 justify-between items-center px-10 py-3 bg-[#38105e] backdrop-blur-md shadow-md shadow-white border-b border-[#5A189A]`}>
         {/* logo */}
         <div className='text-xl font-bold text-center'>
-          <a href="/">CWA</a>
-          <h4 className='text-[15px] text-red-500'>Code With Anjali</h4>
+          <a href='/' className='text-[20px]'>Code With <span className='text-red-500'>Anjali</span></a>
         </div>
         {/* links section */}
         <div className={`hidden md:flex space-x-20 `}>
           {
             navLinks.map((link) => {
               return (
-                <Link key={link.name} to={link.path} className='hover:underline' >{link.name}</Link>
+                <Link key={link.name} to={link.path} className='nav-link hover:underline font-bold text-[18px] text-white hover:text-red-500' >{link.name}</Link>
               )
             })
           }
         </div>
-        {/* theme mode section */}
-        {/* <div>
-          <button onClick={() => { toggle === "DARK" ? setToggle("LIGHT") : setToggle("DARK") }}
-            className=''>
-            {toggle === "LIGHT" ?
-              <ToggleRightIcon className='text-black' size={30} />
-              :
-              <ToggleLeftIcon className='text-white' size={30} />
-            }
-          </button>
-        </div> */}
       </nav>
-    </>
+    </header>
   )
 }
 
